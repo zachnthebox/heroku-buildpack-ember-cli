@@ -190,8 +190,8 @@ status "Installing dependencies"
 npm install --quiet --no-optional --userconfig $build_dir/.npmrc 2>&1 | indent
 bower install --quiet | indent
 
-# Add the project's and ember-cli's dependencies' binaries to the PATH
-PATH=$build_dir/node_modules/.bin:$build_dir/node_modules/ember-cli/node_modules/.bin:$PATH
+# Add the project's binaries to the PATH
+PATH=$build_dir/node_modules/.bin:$PATH
 
 # Persist goodies like node-version in the slug
 mkdir -p $build_dir/.heroku
@@ -216,8 +216,8 @@ if test -f $build_dir/hooks/before_hook.sh; then
   source $build_dir/hooks/before_hook.sh
 fi
 
-status "Building Ember CLI application $build_env distribution"
-$build_dir/node_modules/ember-cli/bin/ember build --environment $build_env | indent
+status "Create a dojo production build"
+npm run production-build | indent
 
 if test -f $build_dir/hooks/after_hook.sh; then
   status "After hook detected. Running..."
