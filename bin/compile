@@ -217,7 +217,7 @@ if test -f $build_dir/hooks/before_hook.sh; then
 fi
 
 status "Create a dojo production build"
-npm run production-build | indent
+# npm run production-build | indent
 
 if test -f $build_dir/hooks/after_hook.sh; then
   status "After hook detected. Running..."
