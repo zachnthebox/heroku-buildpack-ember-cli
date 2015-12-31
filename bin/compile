@@ -188,7 +188,7 @@ bower prune 2>&1 | indent
 status "Installing dependencies"
 # Make npm output to STDOUT instead of its default STDERR
 npm install --quiet --no-optional --userconfig $build_dir/.npmrc 2>&1 | indent
-bower install --quiet | indent
+# bower install --quiet | indent
 
 # Add the project's binaries to the PATH
 PATH=$build_dir/node_modules/.bin:$PATH
